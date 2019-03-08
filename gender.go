@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/kako-jun/sex/sex-core"
+	"github.com/kako-jun/gender/gender-core"
 )
 
 func parseArgs() (keyword string, commandArgs []string, err error) {
@@ -26,9 +26,9 @@ func main() {
 	if err != nil {
 		fmt.Println("error:", err)
 		fmt.Println("usage:")
-		fmt.Println("  sex [a search term]")
+		fmt.Println("  gender [a search term]")
 		return
 	}
 
-	sex.Exec(keyword, args)
+	gender.Exec(keyword, args)
 }

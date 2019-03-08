@@ -1,5 +1,5 @@
-// sex is ***
-package sex
+// Package gender is ***
+package gender
 
 import (
 	"bufio"
@@ -11,7 +11,7 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/kako-jun/sex/statik"
+	_ "github.com/kako-jun/gender/statik"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/rakyll/statik/fs"
 )
@@ -27,10 +27,10 @@ type Translation struct {
 	Fr []ALocale `json:"fr"`
 }
 
-// Sex is ***
-type Sex struct{}
+// Gender is ***
+type Gender struct{}
 
-func (sex Sex) exists(path string) bool {
+func (gender Gender) exists(path string) bool {
 	if _, err := os.Stat(path); err != nil {
 		return false
 	}
@@ -38,7 +38,7 @@ func (sex Sex) exists(path string) bool {
 	return true
 }
 
-func (sex Sex) full_gender(id string) (full string) {
+func (gender Gender) full_gender(id string) (full string) {
 	switch id {
 	case "f":
 		full = "feminine"
@@ -51,7 +51,7 @@ func (sex Sex) full_gender(id string) (full string) {
 	return full
 }
 
-func (sex Sex) findKeyword(keyword string) (results [][]string, err error) {
+func (gender Gender) findKeyword(keyword string) (results [][]string, err error) {
 
 	statikFS, err := fs.New()
 	if err != nil {
@@ -79,7 +79,7 @@ func (sex Sex) findKeyword(keyword string) (results [][]string, err error) {
 	// // windows: C:\Users\{{user}}\AppData\Local\Temp
 	// // mac: /var/folders/t9/{{id}}/T/
 	// // linux: /tmp
-	// db_file_path := os.TempDir() + "/sex/translation.db"
+	// db_file_path := os.TempDir() + "/gender/translation.db"
 	// file, err := os.Create(db_file_path)
 	// if err != nil {
 	// 	panic(err)
@@ -116,8 +116,8 @@ func (sex Sex) findKeyword(keyword string) (results [][]string, err error) {
 	return results, err
 }
 
-func (sex Sex) translate(keyword string) (translations []Translation, err error) {
-	rows, err := sex.findKeyword(keyword)
+func (gender Gender) translate(keyword string) (translations []Translation, err error) {
+	rows, err := gender.findKeyword(keyword)
 	if err != nil {
 		panic(err)
 	}
@@ -140,21 +140,21 @@ func (sex Sex) translate(keyword string) (translations []Translation, err error)
 		{
 			var aLocale ALocale
 			aLocale.Translated = fr_1_translated
-			aLocale.Gender = sex.full_gender(fr_1_gender)
+			aLocale.Gender = gender.full_gender(fr_1_gender)
 			fr = append(fr, aLocale)
 		}
 
 		{
 			var aLocale ALocale
 			aLocale.Translated = fr_2_translated
-			aLocale.Gender = sex.full_gender(fr_2_gender)
+			aLocale.Gender = gender.full_gender(fr_2_gender)
 			fr = append(fr, aLocale)
 		}
 
 		{
 			var aLocale ALocale
 			aLocale.Translated = fr_3_translated
-			aLocale.Gender = sex.full_gender(fr_3_gender)
+			aLocale.Gender = gender.full_gender(fr_3_gender)
 			fr = append(fr, aLocale)
 		}
 
@@ -165,8 +165,8 @@ func (sex Sex) translate(keyword string) (translations []Translation, err error)
 	return translations, err
 }
 
-func (sex Sex) Start(keyword string, args []string) (err error) {
-	translations, err := sex.translate(keyword)
+func (gender Gender) start(keyword string, args []string) (err error) {
+	translations, err := gender.translate(keyword)
 	if err != nil {
 		panic(err)
 	}
@@ -203,8 +203,8 @@ func (sex Sex) Start(keyword string, args []string) (err error) {
 
 // Exec is ***
 func Exec(keyword string, args []string) (errReturn error) {
-	sex := new(Sex)
-	if err := sex.Start(keyword, args); err != nil {
+	gender := new(Gender)
+	if err := gender.start(keyword, args); err != nil {
 		fmt.Println("error:", err)
 		errReturn = errors.New("error")
 		return
