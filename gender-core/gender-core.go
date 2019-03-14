@@ -64,66 +64,66 @@ func (gender Gender) createQuery(keyword string, exactFlag bool, closestFlag boo
 
 	if exactFlag {
 		if arFlag {
-			where += ` OR ar_translated_1 = '` + keyword + `'`
+			where += ` OR ar_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR ar_translated_2 = '` + keyword + `'`
-				where += ` OR ar_translated_3 = '` + keyword + `'`
+				where += ` OR ar_translated_2 LIKE '` + keyword + `'`
+				where += ` OR ar_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if frFlag {
-			where += ` OR fr_translated_1 = '` + keyword + `'`
+			where += ` OR fr_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR fr_translated_2 = '` + keyword + `'`
-				where += ` OR fr_translated_3 = '` + keyword + `'`
+				where += ` OR fr_translated_2 LIKE '` + keyword + `'`
+				where += ` OR fr_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if deFlag {
-			where += ` OR de_translated_1 = '` + keyword + `'`
+			where += ` OR de_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR de_translated_2 = '` + keyword + `'`
-				where += ` OR de_translated_3 = '` + keyword + `'`
+				where += ` OR de_translated_2 LIKE '` + keyword + `'`
+				where += ` OR de_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if hiFlag {
-			where += ` OR hi_translated_1 = '` + keyword + `'`
+			where += ` OR hi_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR hi_translated_2 = '` + keyword + `'`
-				where += ` OR hi_translated_3 = '` + keyword + `'`
+				where += ` OR hi_translated_2 LIKE '` + keyword + `'`
+				where += ` OR hi_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if itFlag {
-			where += ` OR it_translated_1 = '` + keyword + `'`
+			where += ` OR it_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR it_translated_2 = '` + keyword + `'`
-				where += ` OR it_translated_3 = '` + keyword + `'`
+				where += ` OR it_translated_2 LIKE '` + keyword + `'`
+				where += ` OR it_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if ptFlag {
-			where += ` OR pt_translated_1 = '` + keyword + `'`
+			where += ` OR pt_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR pt_translated_2 = '` + keyword + `'`
-				where += ` OR pt_translated_3 = '` + keyword + `'`
+				where += ` OR pt_translated_2 LIKE '` + keyword + `'`
+				where += ` OR pt_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if ruFlag {
-			where += ` OR ru_translated_1 = '` + keyword + `'`
+			where += ` OR ru_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR ru_translated_2 = '` + keyword + `'`
-				where += ` OR ru_translated_3 = '` + keyword + `'`
+				where += ` OR ru_translated_2 LIKE '` + keyword + `'`
+				where += ` OR ru_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 
 		if esFlag {
-			where += ` OR es_translated_1 = '` + keyword + `'`
+			where += ` OR es_translated_1 LIKE '` + keyword + `'`
 			if !closestFlag {
-				where += ` OR es_translated_2 = '` + keyword + `'`
-				where += ` OR es_translated_3 = '` + keyword + `'`
+				where += ` OR es_translated_2 LIKE '` + keyword + `'`
+				where += ` OR es_translated_3 LIKE '` + keyword + `'`
 			}
 		}
 	} else {
