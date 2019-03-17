@@ -60,7 +60,7 @@ func (gender Gender) fullGender(id string) (full string) {
 }
 
 func (gender Gender) createQuery(keyword string, exactFlag bool, closestFlag bool, arFlag bool, frFlag bool, deFlag bool, hiFlag bool, itFlag bool, ptFlag bool, ruFlag bool, esFlag bool) (query string) {
-	where := ` en = '` + keyword + `'`
+	where := ` WHERE en LIKE '` + keyword + `'`
 
 	if exactFlag {
 		if arFlag {
@@ -192,7 +192,7 @@ func (gender Gender) createQuery(keyword string, exactFlag bool, closestFlag boo
 		}
 	}
 
-	query = `SELECT * FROM view_translation WHERE` + where
+	query = `SELECT * FROM view_translation` + where
 	return
 }
 
